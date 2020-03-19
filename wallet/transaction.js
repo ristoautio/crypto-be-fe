@@ -42,7 +42,7 @@ class Transaction {
             .reduce((total, outputAmount) => total + outputAmount);
 
         if (amount !== outputTotal) {
-            console.error('amount is invalid');
+            console.error('amount is invalid', amount);
             return false;
         }
 

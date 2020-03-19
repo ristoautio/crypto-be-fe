@@ -6,7 +6,6 @@ class Wallet {
 
     constructor() {
         this.balance = STARTING_BALANCE;
-
         this.keyPair = ec.genKeyPair();
         this.publicKey = this.keyPair.getPublic().encode('hex');
     }
@@ -36,7 +35,7 @@ class Wallet {
                     if (address === t.input.address) {
                         hasConductedTransaction = true;
                     }
-                    outputTotal += t.outputMap[address];
+                    outputTotal += t.outputMap[address] ? t.outputMap[address] : 0;
                 });
             }
             return hasConductedTransaction;
