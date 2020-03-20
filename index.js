@@ -23,32 +23,32 @@ if (process.env.GENERATE_PEER_PORT === 'true') {
 const pubsub = new PubSub({blockChain, transactionPool});
 const transactionMiner = new TransactionMiner({transactionPool, pubsub, blockChain, wallet})
 
-const wallet1 = new Wallet();
-const wallet2 = new Wallet();
+// const wallet1 = new Wallet();
+// const wallet2 = new Wallet();
+//
+// const generateWalletTransaction = ({wallet, recipient, amount}) => {
+//     const transaction = wallet.createTransaction({amount: amount, recipient, chain: blockChain.chain});
+//     transactionPool.setTransaction(transaction);
+// };
 
-const generateWalletTransaction = ({wallet, recipient, amount}) => {
-    const transaction = wallet.createTransaction({amount: amount, recipient, chain: blockChain.chain});
-    transactionPool.setTransaction(transaction);
-};
+// const walletAction = () => generateWalletTransaction({wallet: wallet, recipient: wallet1.publicKey, amount: 5});
+// const wallet1Action = () => generateWalletTransaction({wallet: wallet1, recipient: wallet2.publicKey, amount: 15});
+// const wallet2Action = () => generateWalletTransaction({wallet: wallet2, recipient: wallet.publicKey, amount: 25});
 
-const walletAction = () => generateWalletTransaction({wallet: wallet, recipient: wallet1.publicKey, amount: 5});
-const wallet1Action = () => generateWalletTransaction({wallet: wallet1, recipient: wallet2.publicKey, amount: 15});
-const wallet2Action = () => generateWalletTransaction({wallet: wallet2, recipient: wallet.publicKey, amount: 25});
-
-for (let i = 0; i < 10; i++) {
-    if (i % 3 === 0) {
-        walletAction();
-        wallet1Action();
-    } else if (i%3 === 1) {
-        wallet1Action();
-        wallet2Action();
-    } else {
-        walletAction();
-        wallet2Action();
-    }
-
-    transactionMiner.mineTransaction();
-}
+// for (let i = 0; i < 10; i++) {
+//     if (i % 3 === 0) {
+//         walletAction();
+//         wallet1Action();
+//     } else if (i%3 === 1) {
+//         wallet1Action();
+//         wallet2Action();
+//     } else {
+//         walletAction();
+//         wallet2Action();
+//     }
+//
+//     transactionMiner.mineTransaction();
+// }
 
 
 setTimeout(() => pubsub.broadcastChain(), 2000);

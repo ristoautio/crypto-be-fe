@@ -5,8 +5,7 @@ import Row from "reactstrap/es/Row";
 import {Link} from "react-router-dom";
 
 const container = {
-    maxWidth: '80%',
-    border: 'solid black 4px'
+    maxWidth: '80%'
 };
 
 function App() {
@@ -15,6 +14,7 @@ function App() {
         <Container style={container}>
             <Link to='/blocks'>Blocks</Link>
             <Link to='/transaction'>Transaction</Link>
+            <Link to='/transaction-pool'>Transaction Pool</Link>
             <Row>
                 <Wallet/>
             </Row>
